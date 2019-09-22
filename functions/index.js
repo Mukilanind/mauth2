@@ -9,9 +9,11 @@ const authServer = require('./routes/auth')
 
 app.use('/auth', authServer)
 
-app.get('*', function(req, res){
+// 404 Handler
+app.get('*', (req, res) => {
     res.sendFile('404.html', {
-        root: path.join(__dirname, '../public')
+        root: path.join(__dirname, './public/')
     })
 });
+
 exports.app = functions.https.onRequest(app);
